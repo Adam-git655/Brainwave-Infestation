@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://drfxj7ado2y7a"]
+
+[ext_resource type="Script" path="res://scenes/Options.gd" id="1_xlr8s"]
+[ext_resource type="Texture2D" uid="uid://yk4gbvtmpu6t" path="res://sprites/bg_image.jpg" id="2_1r228"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xlr8s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 3472.0
+offset_bottom = 1960.0
+scale = Vector2(0.335, 0.33)
+texture = ExtResource("2_1r228")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 246.0
+offset_right = 848.0
+offset_bottom = 410.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 35
+text = "Move - WASD
+Shoot - Left Mouse Button
+Melee - Right Mouse Button
+"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 580.0
+offset_right = 192.0
+offset_bottom = 616.0
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

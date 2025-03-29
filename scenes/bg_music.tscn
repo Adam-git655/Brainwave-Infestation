@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx76xbl4n0238"]
+
+[ext_resource type="AudioStream" uid="uid://ba2dorxecl4" path="res://audio/dead-by-daylight-10243.mp3" id="1_hxgd8"]
+
+[node name="Bg_music" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_hxgd8")
+volume_db = -10.0
+autoplay = true

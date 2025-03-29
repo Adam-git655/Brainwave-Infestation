@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl8rt8ekcgtd7"]
+
+[ext_resource type="Texture2D" uid="uid://yk4gbvtmpu6t" path="res://sprites/bg_image.jpg" id="1_0vxnf"]
+[ext_resource type="Script" path="res://scenes/Wild_cards.gd" id="1_prsa7"]
+[ext_resource type="Texture2D" uid="uid://bb8tebaj2luel" path="res://sprites/Screenshot 2024-03-15 210134.png" id="2_tdgkd"]
+[ext_resource type="Texture2D" uid="uid://bbuu75k87lakf" path="res://sprites/Screenshot 2024-03-15 210202.png" id="3_tmxej"]
+[ext_resource type="Texture2D" uid="uid://btbw1ynlmirxq" path="res://sprites/Screenshot 2024-03-17 115928.png" id="5_ujf54"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_prsa7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 3472.0
+offset_bottom = 1960.0
+scale = Vector2(0.335, 0.33)
+texture = ExtResource("1_0vxnf")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(300, 343)
+scale = Vector2(0.5, 0.513)
+texture = ExtResource("2_tdgkd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(592, 342)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tmxej")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(879.125, 341.894)
+scale = Vector2(0.768018, 0.749006)
+texture = ExtResource("5_ujf54")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 583.0
+offset_right = 164.0
+offset_bottom = 614.0
+text = "Back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 103.0
+offset_right = 943.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "✔️"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 102.0
+offset_right = 650.0
+offset_bottom = 171.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "✔️"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

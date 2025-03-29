@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqxt7ya3c1s5o"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_e5tb8"]
+[ext_resource type="Texture2D" uid="uid://yk4gbvtmpu6t" path="res://sprites/bg_image.jpg" id="2_ftfa6"]
+[ext_resource type="FontFile" uid="uid://djavwh43na8n8" path="res://fonts/Ghastly Panic.ttf" id="3_3w40b"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e5tb8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 3473.0
+offset_bottom = 1957.0
+scale = Vector2(0.335, 0.33)
+texture = ExtResource("2_ftfa6")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 195.0
+offset_right = 1093.0
+offset_bottom = 412.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_3w40b")
+theme_override_font_sizes/normal_font_size = 200
+text = "Brainwave Infestation"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 489.0
+offset_right = 121.0
+offset_bottom = 626.0
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Controls
+"
+
+[node name="Wild_Cards" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Wild Cards
+"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Wild_Cards" to="." method="_on_wild_cards_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

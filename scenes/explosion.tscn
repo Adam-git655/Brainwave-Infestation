@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://clmb8ub4x11mc"]
+
+[ext_resource type="AudioStream" uid="uid://dqwagp2kus4b0" path="res://audio/explosion-6055.mp3" id="1_23u8y"]
+
+[sub_resource type="Curve" id="Curve_4d4ge"]
+_data = [Vector2(0.0224719, 1), 0.0, 0.0, 0, 0, Vector2(0.977528, 0.175824), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_n40w8"]
+offsets = PackedFloat32Array(0.253333, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.109804, 0, 1)
+
+[node name="explosion" type="Node2D"]
+z_index = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 60
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_4d4ge")
+color_ramp = SubResource("Gradient_n40w8")
+
+[node name="Explosion_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_23u8y")
+volume_db = -10.0
+pitch_scale = 2.0

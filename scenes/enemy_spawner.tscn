@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkn03an65lxsj"]
+
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="1_vn8k3"]
+
+[node name="Enemy_Spawner" type="Node2D"]
+z_index = 1
+script = ExtResource("1_vn8k3")
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(654, -34)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(686, -34)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(717, -34)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(745, -34)
+
+[node name="Marker2D25" type="Marker2D" parent="."]
+position = Vector2(1190, 304)
+
+[node name="Marker2D26" type="Marker2D" parent="."]
+position = Vector2(1190, 328)
+
+[node name="Marker2D27" type="Marker2D" parent="."]
+position = Vector2(1190, 354)
+
+[node name="Marker2D28" type="Marker2D" parent="."]
+position = Vector2(1190, 380)
+
+[node name="Marker2D29" type="Marker2D" parent="."]
+position = Vector2(1190, 403)
+
+[node name="Marker2D30" type="Marker2D" parent="."]
+position = Vector2(1190, 426)
+
+[node name="Marker2D9" type="Marker2D" parent="."]
+position = Vector2(361, 694)
+
+[node name="Marker2D10" type="Marker2D" parent="."]
+position = Vector2(391, 694)
+
+[node name="Marker2D11" type="Marker2D" parent="."]
+position = Vector2(420, 694)
+
+[node name="Marker2D12" type="Marker2D" parent="."]
+position = Vector2(451, 694)
+
+[node name="Marker2D13" type="Marker2D" parent="."]
+position = Vector2(478, 694)
+
+[node name="Marker2D14" type="Marker2D" parent="."]
+position = Vector2(505, 694)
+
+[node name="Marker2D15" type="Marker2D" parent="."]
+position = Vector2(531, 694)
+
+[node name="Marker2D16" type="Marker2D" parent="."]
+position = Vector2(556, 694)
+
+[node name="Marker2D19" type="Marker2D" parent="."]
+position = Vector2(-54, 289)
+
+[node name="Marker2D20" type="Marker2D" parent="."]
+position = Vector2(-54, 313)
+
+[node name="Marker2D21" type="Marker2D" parent="."]
+position = Vector2(-54, 336)
+
+[node name="Marker2D22" type="Marker2D" parent="."]
+position = Vector2(-54, 357)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Bomber_Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="speeder_Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Bomber_Timer" to="." method="_on_bomber_timer_timeout"]
+[connection signal="timeout" from="speeder_Timer" to="." method="_on_speeder_timer_timeout"]

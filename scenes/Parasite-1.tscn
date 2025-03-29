@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://di2o8imbcq2ms"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_pbsxt"]
+[ext_resource type="Texture2D" uid="uid://cwin3mfif5rra" path="res://sprites/Parasite-1.png" id="2_rsivg"]
+[ext_resource type="Texture2D" uid="uid://b4evebt4gwavu" path="res://sprites/Parasite-1_dead.png" id="3_ymsnc"]
+[ext_resource type="AudioStream" uid="uid://ccrgu2o6vkpfj" path="res://audio/combat-bloody-splat-epic-stock-media-3-3-00-00.mp3" id="4_omd3s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afqyu"]
+atlas = ExtResource("2_rsivg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5s2b"]
+atlas = ExtResource("2_rsivg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfu4y"]
+atlas = ExtResource("2_rsivg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m58s8"]
+atlas = ExtResource("2_rsivg")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omwds"]
+atlas = ExtResource("2_rsivg")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3uh0"]
+atlas = ExtResource("3_ymsnc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqovc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afqyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5s2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfu4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m58s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omwds")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3uh0")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ta03n"]
+size = Vector2(33, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44vau"]
+size = Vector2(33, 31)
+
+[node name="Parasite-1" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(1.76, 1.63189)
+collision_layer = 2
+script = ExtResource("1_pbsxt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wqovc")
+animation = &"Move"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ta03n")
+
+[node name="Entrance_timer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="Death_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Parasite-Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parasite-Hitbox"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_44vau")
+
+[node name="Enemy_death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_omd3s")
+volume_db = -20.0
+
+[connection signal="timeout" from="Entrance_timer" to="." method="_on_entrance_timer_timeout"]
+[connection signal="timeout" from="Death_timer" to="." method="_on_death_timer_timeout"]
+[connection signal="body_entered" from="Parasite-Hitbox" to="." method="_on_parasite_hitbox_body_entered"]
